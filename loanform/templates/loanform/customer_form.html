@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="mx-2 my-4">
+    <div class="container-fluid">
+        <div class="row" style="background-color: slategray">
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+                <h1 style="color: aliceblue">Machine Learning Deployment Practise</h1>
+            </div>
+            <div class="col-4">
+                <ul style="list-style: none;color: aliceblue; font-size: 1.3vw" >
+                    <li class="my-2" >
+                        <img src="{% static '/images/gmail_logo.png' %}" alt="Gmail" width="8%" height="6%"> : sudarshanawasthi47@gmail.com
+                    </li>
+                    <li>
+                        <img src="{% static '/images/phone_logo.png' %}" alt="Mobile" width="8%" height="6%"> : +4915221054056
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+         <!-- Form Messages Division-->
+<div class="mx-1 my-3">
+     <div class="container-fluid">
+         <div class="row">
+            <div class="col-3">
+            </div>
+             <!-- Form Division-->
+            <div class="col-6">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <button style="margin-left: 45%"  class="btn btn-primary btn-lg" type="submit">submit</button>
+                 </form>
+            </div>
+         <!-- Messages Division-->
+             <div class="col-3">
+                 <h4 style="font-size: 2vw;background-color: cadetblue;">
+                     {% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                 </h4>
+             </div>
+         </div>
+    </div>
+</div>
+</body>
+</html>
