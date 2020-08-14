@@ -19,10 +19,10 @@ def customer_form(request):
         #need to one hot encode the data frame and
         #then pass to classifier
         #passing it to one hot encoder and classifier
-        result = loanstatuspredictor(ohedataframe(df))
         if(int(df['LoanAmount']) > 40000):
             messages.success(request, 'Sorry we cannot process the loan more than $40000 ')
         else:
+            result = loanstatuspredictor(ohedataframe(df))
             messages.success(request,'Your application is {}' .format(result))
     form = CustomerForm()
     return render(request,'loanform/customer_form.html', {'form' : form})
@@ -49,6 +49,7 @@ def ohedataframe(df):
 def loanstatuspredictor(final_df):
     print("################Inside Loan status predictor##################")
     try:
+        print("################Inside Try##################")
         scalar = joblib.load('Ml_models/scalar.pkl')
         print("################Scalars Loaded##################")
 
@@ -73,6 +74,7 @@ def loanstatuspredictor(final_df):
             return 'Rejected'
 
     except ValueError as e:
+        print(e.args[0])
         return (e.args[0])
 
 
