@@ -65,8 +65,10 @@ def loanstatuspredictor(final_df):
 
 
     if (y_pred > 0.5):
+        print("Approved")
         return 'Approved'
     else:
+        print("Rejected")
         return 'Rejected'
 
 
