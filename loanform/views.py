@@ -74,6 +74,7 @@ def loanstatuspredictor(final_df):
             return 'Rejected'
 
     except ValueError as e:
+        print("################Inside Except##################")
         print(e.args[0])
         return (e.args[0])
 
