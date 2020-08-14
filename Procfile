@@ -1,0 +1,1 @@
+web: gunicorn BankLoanML.wsgi
