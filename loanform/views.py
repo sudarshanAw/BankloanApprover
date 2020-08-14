@@ -47,18 +47,26 @@ def ohedataframe(df):
     return final_df
 
 def loanstatuspredictor(final_df):
+    print("################Inside Loan status predictor##################")
     scalar = joblib.load('Ml_models/scalar.pkl')
+    print("################Scalars Loaded##################")
+
     classifier = joblib.load('Ml_models/model.pkl')
+    print("################Classifier Loaded Loaded##################")
 
     #scaling the data
+    print("################Before Operation 1##################")
+
     final_input =  scalar.transform(final_df)
+    print("################After Operation 1##################")
+
     y_pred = classifier.predict(final_input)
+    print("################After Operation 2##################")
+
 
     if (y_pred > 0.5):
-        print("Approved")
         return 'Approved'
     else:
-        print("Rejected")
         return 'Rejected'
 
 
