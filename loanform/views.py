@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from loanform.customerform import CustomerForm
 import pandas as pnd
-import joblib
 from django.contrib import messages
+import pickle
 
 # Create your views here.
 
@@ -28,7 +28,7 @@ def customer_form(request):
     return render(request,'loanform/customer_form.html', {'form' : form})
 
 def ohedataframe(df):
-    ohecolumns =  joblib.load('ML_models/ohecolumns.pkl')
+    ohecolumns =  pickle.load(open('ML_models/ohecolumns.pkl','rb'))
     df_dummies = pnd.get_dummies(df,columns=['Gender','Married','Education','Self_Employed','Property_Area'])
     print(ohecolumns)
     print(df_dummies.columns)
@@ -50,10 +50,10 @@ def loanstatuspredictor(final_df):
     print("################Inside Loan status predictor##################")
     try:
         print("################Inside Try##################")
-        scalar = joblib.load('Ml_models/scalar.pkl')
+        scalar = pickle.load(open('Ml_models/scalar.pkl','rb'))
         print("################Scalars Loaded##################")
 
-        classifier = joblib.load('Ml_models/model.pkl')
+        classifier = pickle.load(open('Ml_models/model.pkl','rb'))
         print("################Classifier Loaded Loaded##################")
 
         #scaling the data
