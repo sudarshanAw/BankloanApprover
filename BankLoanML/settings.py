@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'BankLoanML.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'Test',
         'USER' : 'postgres',
         'PASSWORD' : 'emperor1995',
