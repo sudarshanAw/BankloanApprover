@@ -53,7 +53,7 @@ def loanstatuspredictor(final_df):
         scalar = pickle.load(open('Ml_models/scalar.pkl','rb'))
         print("################Scalars Loaded##################")
 
-        classifier = pickle.load(open('Ml_models/model.pkl','rb'))
+        classifier = pickle.load(open('Ml_models/loan_model.pkl','rb'))
         print("################Classifier Loaded Loaded##################")
 
         #scaling the data
